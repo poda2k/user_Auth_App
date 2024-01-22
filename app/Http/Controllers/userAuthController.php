@@ -64,6 +64,7 @@ class userAuthController extends Controller
             'message'=>''
         ]);
     }
+    
     public function postlogin(Request $req){
 
         $userData = $req->validate([

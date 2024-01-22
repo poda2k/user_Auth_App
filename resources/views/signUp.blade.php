@@ -1,5 +1,9 @@
 @include('includes.header')
 
+
+@if(Session::has('message'))
+    {{Session('message')}}
+@endif
 <form method="post" action="{{ route('signup')}}">
     @csrf
     <br><br>

@@ -17,9 +17,10 @@ class checkForSession
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session()->has('userId')){
+        if(Session::has('userId')){
             return $next($request);
         }
+        Session::flash('message','please login or signup before enter!!');
         return redirect()->route('signup');
         
     }

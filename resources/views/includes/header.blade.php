@@ -59,9 +59,10 @@
     <header class="main-header">
         <nav class="main-header__nav">
             <ul class="main-header__item-list">
-                <li class="main-header__item"><a class="active" href="/">Shop</a></li>
+                <li class="main-header__item"><a class="active" href="/">home</a></li>
+                <li class="main-header__item"><a class="" href="/shop">shop</a></li>
                 <li class="main-header__item"><a href="/admin/add-product">Add Product</a></li>
-                @if(session()->has('userId'))
+                @if(Session::has('userId'))
                     <form method="post" action="{{route('logout')}}">
                         @csrf
                         <button type="submit">
@@ -69,7 +70,7 @@
                         </button>
                     </form>
                 @else
-                     <li class="main-header__item"><a class="active" href="/login">login</a></li>
+                     <li class="main-header__item"><a class="" href="/login">login</a></li>
                 </form>
                 @endif
             </ul>
