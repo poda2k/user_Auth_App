@@ -48,9 +48,10 @@ class userAuthController extends Controller
             $makeUser = UserTableModel::create([
                 'name' => $user['name'],
                 'email' => $user['email'],
-                'password' => $encryptedPassword
+                'password' => $encryptedPassword,
+                'role' => 'user'
             ]);
-            Session::put(['userName' => $makeUser->name ,'userId'=>$makeUser->id]);
+            Session::put(['userName' => $makeUser->name ,'userId'=>$makeUser->id ,'role'=>$makeUser->role]);
 
             return redirect()->route('home',[
                 'message'=> 'signedUp successful'
