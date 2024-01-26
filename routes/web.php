@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userAuthController ;
 use App\Http\Controllers\homeController ;
 use App\Http\Controllers\shopController ;
+use App\Http\Controllers\productsController ;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,12 @@ Route::get('/login',[userAuthController::class , 'getLogin'])->name('login');
 Route::post('/login',[userAuthController::class , 'postLogin'])->name('login');
 Route::view('/products','products');
 
+
 Route::group(['middleware'=>'sessionCheck'], function(){
     Route::post('/logOut', [userAuthController::class ,'logOut'])->name('logout');
     Route::get('/shop',[shopController::class ,'getShop']);
+});
+
+Route::group(['middleware'=>'adminCheck'],function(){
+    Route::get('/admin/addProduct',[productsController::class,'getAddProducts']);
 });

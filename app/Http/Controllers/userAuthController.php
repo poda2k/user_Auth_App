@@ -77,7 +77,7 @@ class userAuthController extends Controller
             if($checkForUser){
                 $hashedPass = $checkForUser->password ;
                 if(Hash::check($userData['password'] ,$hashedPass )){
-                    Session::put(['userName'=>$checkForUser->name, 'userId'=>$checkForUser->id]);
+                    Session::put(['userName'=>$checkForUser->name, 'userId'=>$checkForUser->id, 'role'=>$checkForUser->role]);
                     return view('home',[
                         'pageTitle'=>'home'
                     ]);

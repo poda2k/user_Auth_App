@@ -45,6 +45,9 @@ class Kernel extends HttpKernel
         ],
         'sessionCheck' =>[
             \App\Http\Middleware\checkForSession::class
+        ],
+        'adminCheck'=>[
+            \App\Http\Middleware\checkAdmin::class
         ]
     ];
 

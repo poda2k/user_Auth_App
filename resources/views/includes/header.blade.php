@@ -20,7 +20,7 @@
             <ul class="main-header__item-list">
                 <li class="main-header__item"><a class="active" href="/">home</a></li>
                 <li class="main-header__item"><a class="" href="/shop">shop</a></li>
-                <li class="main-header__item"><a href="/admin/add-product">Add Product</a></li>
+                <li class="main-header__item"><a href="/admin/addProduct">Add Product</a></li>
                 @if(Session::has('userId'))
                     <div class="logoutDiv">
                         <form method="post" action="{{route('logout')}}">
