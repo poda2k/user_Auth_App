@@ -20,17 +20,26 @@ use App\Http\Controllers\productsController ;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::view('/test','test');
 Route::get('/',[homeController::class , 'index'])->name('home') ;
-Route::get('/signup',[userAuthController::class , 'signup'])->name('signup') ;
-Route::post('/signup',[userAuthController::class , 'postSignUp']);
-Route::get('/login',[userAuthController::class , 'getLogin'])->name('login');
-Route::post('/login',[userAuthController::class , 'postLogin'])->name('login');
+Route::controller(userAuthController::class)->group(function(){
+    Route::get('/signup', 'signup')->name('signup') ;
+    Route::post('/signup', 'postSignUp');
+    Route::get('/login', 'getLogin')->name('login');
+    Route::post('/login', 'postLogin')->name('login');
+});
+
+
+
 Route::view('/products','products');
 
 
 Route::group(['middleware'=>'sessionCheck'], function(){
     Route::post('/logOut', [userAuthController::class ,'logOut'])->name('logout');
-    Route::get('/shop',[shopController::class ,'getShop']);
+    Route::controller(productsController::class)->group(function(){
+        Route::post('/shop','addProduct')->name('shop');
+        Route::get('/shop','getAllProducts');
+    });
 });
 
 Route::group(['middleware'=>'adminCheck'],function(){

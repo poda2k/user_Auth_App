@@ -2,8 +2,11 @@
 @foreach ($allProducts as $prod )
 <div class="wrapper">
     <div class="product-img">
-      <img src="http://bit.ly/2tMBBTd" height="420" width="327">
+      <img src="{{asset('storage/'.$prod->imagePath)}}" height="420" width="327">
+      
+
     </div>
+    {{-- <h6>{{$prod->imagePath}}</h6> --}}
     <div class="product-info">
       <div class="product-text">
         <h1>{{$prod->name}}</h1>
@@ -18,4 +21,4 @@
     </div>
   </div>
 @endforeach
- 
+
